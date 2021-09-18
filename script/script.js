@@ -134,12 +134,7 @@ masterChef.init = () => {
 	masterChef.categoriesWrapper.addEventListener('click', (event) => {
 		if (event.target.tagName != "UL") {
 			const mealType = event.target.className;
-			// console.log(mealType.toLowerCase());
 			masterChef.getMealsByCategory(mealType.toLowerCase());
-
-			// console.log(event.target.className);
-			// if (event.target.className === )
-
 		}
 	})
 	masterChef.buttonsContainer.addEventListener('click', (event) => {

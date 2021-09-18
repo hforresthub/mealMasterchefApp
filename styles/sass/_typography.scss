@@ -1,0 +1,18 @@
+h1, h2, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 125%;
+    font-family: $primaryFont;
+}
+
+header .wrapper {
+    background: url('../assets/mainheader.jpg') center;
+    background-size: cover;
+}
+
+h1 {
+    font-family: $secondaryFont;
+}
