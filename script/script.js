@@ -39,25 +39,44 @@ const masterChef = {};
 
 // namespace variables
 masterChef.categories = []
+masterChef.categoriesWrapper = document.querySelector('ul.categoriesWrapper');
 
 // functions
+masterChef.displayCategories = () => {
+
+    masterChef.categories.forEach((category) => {
+        const categoryLi = document.createElement('li');
+        categoryLi.innerHTML = `
+            <h2>${category.strCategory}<h2>
+            <div class="imageContainer">
+                <img src="${category.strCategoryThumb}" alt="${category.strCategory} meal" />
+            </div>
+        `
+        masterChef.categoriesWrapper.append(categoryLi);
+    });
+}
+
+
 masterChef.getCategories = () => {
 	// get the categories
 	const url = new URL('https://www.themealdb.com/api/json/v1/1/categories.php')
 	fetch(url).then((response) => {
-		console.log();
-	})
-	// return array of categories
-
-}
-
-masterChef.displayCategories = () => {
-	masterChef.categories = masterChef.getCategories()
+		return response.json();
+	}).then((jsonResults) => {
+        // console.log(jsonResults.categories);
+        masterChef.categories = jsonResults.categories;
+        masterChef.displayCategories();
+    });
 }
 
 masterChef.init = () => {
-	console.log('💪😎🎶🐱‍🏍🐱‍👤');
-	masterChef.displayCategories()
+	// console.log('💪😎🎶🐱‍🏍🐱‍👤');
+	masterChef.getCategories();
+    masterChef.categoriesWrapper.addEventListener('click', (event) => {
+        if(event.target.tagName === 'LI') {
+            console.log("li clicked");
+        }
+    })
 }
 
 
