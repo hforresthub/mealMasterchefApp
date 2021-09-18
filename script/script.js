@@ -33,3 +33,32 @@
 // If the API call fails, display an error message
 
 console.log("Hello, world!");
+
+// namespace app
+const masterChef = {};
+
+// namespace variables
+masterChef.categories = []
+
+// functions
+masterChef.getCategories = () => {
+	// get the categories
+	const url = new URL('https://www.themealdb.com/api/json/v1/1/categories.php')
+	fetch(url).then((response) => {
+		console.log();
+	})
+	// return array of categories
+
+}
+
+masterChef.displayCategories = () => {
+	masterChef.categories = masterChef.getCategories()
+}
+
+masterChef.init = () => {
+	console.log('💪😎🎶🐱‍🏍🐱‍👤');
+	masterChef.displayCategories()
+}
+
+
+masterChef.init();
