@@ -41,37 +41,59 @@ const masterChef = {};
 masterChef.categories = []
 masterChef.meals = [];
 masterChef.categoriesWrapper = document.querySelector('ul.categoriesWrapper');
+masterChef.mealSelectionsWrapper = document.querySelector('ul.mealSelectionsWrapper');
 
 
 
 masterChef.displayMeals = () => {
-    const mealUl = document.createElement('ul');
-    mealUl.classList.add('mealUl');
-    const randomMeals = []; 
-
-    for (let i = 0; i < 3; i++) {
-        // error handling here when there is nothing in the array
-        const randomNumberIndex = Math.floor(Math.random() * masterChef.meals.length);
-        randomMeals.push(masterChef.meals.slice(randomNumberIndex, randomNumberIndex + 1)[0]);
-    }
-    console.log(randomMeals);
+	const randomMeals = [];
+	const tempMeals = masterChef.meals.slice(0, masterChef.meals.length);
+	
+	if (tempMeals.length > 3) {
+		for (let i = 0; i < 3; i++) {
+			// error handling here when there is nothing in the array
+			const randomNumberIndex = Math.floor(Math.random() * tempMeals.length);
+			randomMeals.push(tempMeals.splice(randomNumberIndex, 1)[0]);
+		}
+	} else {
+		randomMeals = tempMeals
+		tempMeals = []
+	}
+	
+	console.log(randomMeals);
+	console.log(tempMeals);
+	console.log(masterChef.meals)
+	
+	randomMeals.forEach((meal) => {
+		const mealLi = document.createElement('li');
+		mealLi.classList.add(meal.idMeal);
+		mealLi.innerHTML = `
+            <h2 class="${meal.idMeal}">${meal.strMeal}<h2>
+            <div class="imageContainer">
+                <img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="${meal.idMeal}" />
+            </div>
+        `;
+		console.log(meal.idMeal);
+		console.log(mealLi);
+		masterChef.mealSelectionsWrapper.append(mealLi);
+	});
 }
 
 // functions
 masterChef.getMealsByCategory = (category) => {
 	// get the categories
 	const url = new URL('https://www.themealdb.com/api/json/v1/1/filter.php')
-    url.search = new URLSearchParams({
-        c: category
-    });
+	url.search = new URLSearchParams({
+		c: category
+	});
 
 	fetch(url).then((response) => {
 		return response.json();
 	}).then((jsonResults) => {
 		// console.log(jsonResults.meals);
-        masterChef.meals = jsonResults.meals;
+		masterChef.meals = jsonResults.meals;
 		masterChef.displayMeals();
-        
+
 	});
 }
 
@@ -109,7 +131,7 @@ masterChef.init = () => {
 	masterChef.getCategories();
 	masterChef.categoriesWrapper.addEventListener('click', (event) => {
 		if (event.target.tagName != "UL") {
-            masterChef.getMealsByCategory("seafood");
+			masterChef.getMealsByCategory("seafood");
 
 			// console.log(event.target.className);
 			// if (event.target.className === )
