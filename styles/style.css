@@ -242,3 +242,7 @@ li {
 ul {
   border: 1px solid blue;
 }
+
+.hideButton {
+  display: none;
+}

@@ -46,6 +46,7 @@ masterChef.mealSelectionsWrapper = document.querySelector('ul.mealSelectionsWrap
 
 
 masterChef.displayMeals = () => {
+    masterChef.categoriesWrapper.innerHTML = "";
 	const randomMeals = [];
 	const tempMeals = masterChef.meals.slice(0, masterChef.meals.length);
 	
@@ -55,7 +56,10 @@ masterChef.displayMeals = () => {
 			const randomNumberIndex = Math.floor(Math.random() * tempMeals.length);
 			randomMeals.push(tempMeals.splice(randomNumberIndex, 1)[0]);
 		}
-	} else {
+	} else if (tempMeals.length === 0) {
+        // throw error message
+        masterChef.mealSelectionsWrapper.innerHTML = "You're out of meals";
+    } else {
 		randomMeals = tempMeals
 		tempMeals = []
 	}
@@ -77,6 +81,9 @@ masterChef.displayMeals = () => {
 		console.log(mealLi);
 		masterChef.mealSelectionsWrapper.append(mealLi);
 	});
+
+    const buttonsContainer = document.querySelector('.buttonsContainer');
+    buttonsContainer.classList.toggle('hideButton');
 }
 
 // functions
@@ -131,7 +138,9 @@ masterChef.init = () => {
 	masterChef.getCategories();
 	masterChef.categoriesWrapper.addEventListener('click', (event) => {
 		if (event.target.tagName != "UL") {
-			masterChef.getMealsByCategory("seafood");
+            const mealType = event.target.className;
+            // console.log(mealType.toLowerCase());
+			masterChef.getMealsByCategory(mealType.toLowerCase());
 
 			// console.log(event.target.className);
 			// if (event.target.className === )
