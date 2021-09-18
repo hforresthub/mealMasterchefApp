@@ -40,34 +40,28 @@ const masterChef = {};
 // namespace variables
 masterChef.categories = []
 masterChef.meals = [];
+masterChef.tempMeals = [];
 masterChef.categoriesWrapper = document.querySelector('ul.categoriesWrapper');
 masterChef.mealSelectionsWrapper = document.querySelector('ul.mealSelectionsWrapper');
-
+masterChef.buttonsContainer = document.querySelector('.buttonsContainer');
 
 
 masterChef.displayMeals = () => {
-    masterChef.categoriesWrapper.innerHTML = "";
+	masterChef.categoriesWrapper.innerHTML = "";
+	masterChef.mealSelectionsWrapper.innerHTML = "";
 	const randomMeals = [];
-	const tempMeals = masterChef.meals.slice(0, masterChef.meals.length);
-	
-	if (tempMeals.length > 3) {
-		for (let i = 0; i < 3; i++) {
-			// error handling here when there is nothing in the array
-			const randomNumberIndex = Math.floor(Math.random() * tempMeals.length);
-			randomMeals.push(tempMeals.splice(randomNumberIndex, 1)[0]);
+
+	if (masterChef.tempMeals.length != 0) {
+		for (let i = 0; i < Math.min(3, masterChef.tempMeals.length + 1); i++) {
+			const randomNumberIndex = Math.floor(Math.random() * masterChef.tempMeals.length);
+			randomMeals.push(masterChef.tempMeals.splice(randomNumberIndex, 1)[0]);
 		}
-	} else if (tempMeals.length === 0) {
-        // throw error message
-        masterChef.mealSelectionsWrapper.innerHTML = "You're out of meals";
-    } else {
-		randomMeals = tempMeals
-		tempMeals = []
-	}
-	
-	console.log(randomMeals);
-	console.log(tempMeals);
-	console.log(masterChef.meals)
-	
+	} else {
+		// throw error message
+		masterChef.mealSelectionsWrapper.innerHTML = "You're out of meals";
+	} 
+	console.log(masterChef.tempMeals);
+
 	randomMeals.forEach((meal) => {
 		const mealLi = document.createElement('li');
 		mealLi.classList.add(meal.idMeal);
@@ -82,8 +76,8 @@ masterChef.displayMeals = () => {
 		masterChef.mealSelectionsWrapper.append(mealLi);
 	});
 
-    const buttonsContainer = document.querySelector('.buttonsContainer');
-    buttonsContainer.classList.toggle('hideButton');
+
+	masterChef.buttonsContainer.classList.toggle('hideButton');
 }
 
 // functions
@@ -99,13 +93,14 @@ masterChef.getMealsByCategory = (category) => {
 	}).then((jsonResults) => {
 		// console.log(jsonResults.meals);
 		masterChef.meals = jsonResults.meals;
+		masterChef.tempMeals = masterChef.meals.slice(0, masterChef.meals.length);
 		masterChef.displayMeals();
 
 	});
 }
 
 masterChef.displayCategories = () => {
-
+	masterChef.mealSelectionsWrapper.innerHTML = ''
 	masterChef.categories.forEach((category) => {
 		const categoryLi = document.createElement('li');
 		categoryLi.innerHTML = `
@@ -138,13 +133,23 @@ masterChef.init = () => {
 	masterChef.getCategories();
 	masterChef.categoriesWrapper.addEventListener('click', (event) => {
 		if (event.target.tagName != "UL") {
-            const mealType = event.target.className;
-            // console.log(mealType.toLowerCase());
+			const mealType = event.target.className;
+			// console.log(mealType.toLowerCase());
 			masterChef.getMealsByCategory(mealType.toLowerCase());
 
 			// console.log(event.target.className);
 			// if (event.target.className === )
 
+		}
+	})
+	masterChef.buttonsContainer.addEventListener('click', (event) => {
+		console.log(event.target.className);
+		if (event.target.className === "backToCategory") {
+			masterChef.buttonsContainer.classList.toggle('hideButton');
+			masterChef.displayCategories()
+		} else if (event.target.className === "newMeals") {
+			masterChef.buttonsContainer.classList.toggle('hideButton');
+			masterChef.displayMeals()
 		}
 	})
 }
