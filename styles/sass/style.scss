@@ -1,13 +1,27 @@
 @import '_setup';
 @import '_variables';
 @import '_typography';
+@import '_general';
+@import '_category';
+@import '_mealSelection';
 
-li {
-	border: 1px solid red;
+header .wrapper {
+    background: url('../assets/mainheader.jpg') center;
+    background-size: cover;
+	min-height: 30vh;
+	min-height: -webkit-fill-available;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
 }
 
-ul {
-	border: 1px solid blue;
+h1 {
+	padding-left: 3%;
+
+}
+
+span {
+	display: block;
 }
 
 .hideButton {

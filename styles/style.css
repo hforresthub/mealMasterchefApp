@@ -245,21 +245,52 @@ html {
   font-family: "Fira Code", monospace;
 }
 
-header .wrapper {
-  background: url("../assets/mainheader.jpg") center;
-  background-size: cover;
-}
-
 h1 {
   font-family: "Tienne", serif;
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.1rem;
+}
+
+img {
+  width: 100%;
 }
 
 li {
-  border: 1px solid red;
+  background-color: #e5e0da;
+  margin: 5% 0;
+  list-style: none;
 }
 
-ul {
-  border: 1px solid blue;
+h2 {
+  padding: 5% 0 5% 3%;
+  border-bottom: 2px solid #222;
+}
+
+header .wrapper {
+  background: url("../assets/mainheader.jpg") center;
+  background-size: cover;
+  min-height: 30vh;
+  min-height: -webkit-fill-available;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+h1 {
+  padding-left: 3%;
+}
+
+span {
+  display: block;
 }
 
 .hideButton {

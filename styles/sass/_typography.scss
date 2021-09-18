@@ -8,11 +8,15 @@ html {
     font-family: $primaryFont;
 }
 
-header .wrapper {
-    background: url('../assets/mainheader.jpg') center;
-    background-size: cover;
+h1 {
+	font-family: $secondaryFont;
+	font-size: 2rem;
 }
 
-h1 {
-    font-family: $secondaryFont;
+h2 {
+	font-size: 1.1rem;
+}
+
+img {
+	width: 100%;
 }
