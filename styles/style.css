@@ -234,3 +234,11 @@ html {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+li {
+  border: 1px solid red;
+}
+
+ul {
+  border: 1px solid blue;
+}
