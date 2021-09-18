@@ -32,25 +32,46 @@
 // the meals will display an image and title inside li
 // If the API call fails, display an error message
 
-console.log("Hello, world!");
+// console.log("Hello, world!");
 
 // namespace app
 const masterChef = {};
 
 // namespace variables
 masterChef.categories = []
+masterChef.meals = [];
 masterChef.categoriesWrapper = document.querySelector('ul.categoriesWrapper');
+
+
+
+masterChef.displayMeals = () => {
+    const mealUl = document.createElement('ul');
+    mealUl.classList.add('mealUl');
+    const randomMeals = []; 
+
+    for (let i = 0; i < 3; i++) {
+        // error handling here when there is nothing in the array
+        const randomNumberIndex = Math.floor(Math.random() * masterChef.meals.length);
+        randomMeals.push(masterChef.meals.slice(randomNumberIndex, randomNumberIndex + 1)[0]);
+    }
+    console.log(randomMeals);
+}
 
 // functions
 masterChef.getMealsByCategory = (category) => {
 	// get the categories
-	const url = new URL('https://www.themealdb.com/api/json/v1/1/filter.php?c=beef ')
+	const url = new URL('https://www.themealdb.com/api/json/v1/1/filter.php')
+    url.search = new URLSearchParams({
+        c: category
+    });
+
 	fetch(url).then((response) => {
 		return response.json();
 	}).then((jsonResults) => {
-		// console.log(jsonResults.categories);
-		masterChef.categories = jsonResults.categories;
-		masterChef.displayCategories();
+		// console.log(jsonResults.meals);
+        masterChef.meals = jsonResults.meals;
+		masterChef.displayMeals();
+        
 	});
 }
 
@@ -65,7 +86,7 @@ masterChef.displayCategories = () => {
             </div>
         `
 		categoryLi.classList.add(`${category.strCategory}`);
-		console.log(categoryLi);
+		// console.log(categoryLi);
 		masterChef.categoriesWrapper.append(categoryLi);
 	});
 }
@@ -88,6 +109,7 @@ masterChef.init = () => {
 	masterChef.getCategories();
 	masterChef.categoriesWrapper.addEventListener('click', (event) => {
 		if (event.target.tagName != "UL") {
+            masterChef.getMealsByCategory("seafood");
 
 			// console.log(event.target.className);
 			// if (event.target.className === )
