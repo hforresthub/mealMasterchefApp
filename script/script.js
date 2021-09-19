@@ -51,7 +51,7 @@ masterChef.displayMealInfo = (meal) => {
 	console.log(meal);
 	masterChef.mealSelectionsWrapper.innerHTML = '';
 	// masterChef.h2Instruction.innerHTML = '';
-	masterChef.h2Instruction.classList.toggle('hideElement');
+	masterChef.h2Instruction.classList.add('hideElement');
 
 	masterChef.theMeal.innerHTML = `
 		<h4>${meal.strMeal}</h4>
@@ -66,6 +66,14 @@ masterChef.displayMealInfo = (meal) => {
 			</div>
 		</div>
 	`
+	// console.log(meal.length);
+	const length = Object.keys(meal)
+	console.log(length.length);
+	// meal.ingredient1
+	for (ingredient in meal) {
+		
+		console.log(ingredient == "strIngredient1");
+	}
 }
 
 masterChef.getMealById = (id) => {
@@ -86,9 +94,11 @@ masterChef.getMealById = (id) => {
 }
 
 masterChef.displayMeals = () => {
+	document.querySelector('.newMeals').classList.remove('hideElement')
 	masterChef.categoriesWrapper.innerHTML = "";
 	masterChef.mealSelectionsWrapper.innerHTML = "";
 	masterChef.h2Instruction.innerHTML = "Here are your meals! 😎"
+	masterChef.h2Instruction.classList.remove('hideElement');
 	const randomMeals = [];
 
 	if (masterChef.tempMeals.length != 0) {
@@ -99,7 +109,7 @@ masterChef.displayMeals = () => {
 	} else {
 		// throw error message
 		masterChef.h2Instruction.innerHTML = "You're out of meals";
-	} 
+	}
 
 	randomMeals.forEach((meal) => {
 		const mealLi = document.createElement('li');
@@ -137,7 +147,7 @@ masterChef.getMealsByCategory = (category) => {
 masterChef.displayCategories = () => {
 	masterChef.mealSelectionsWrapper.innerHTML = ''
 	masterChef.theMeal.innerHTML = '';
-	// masterChef.h2Instruction.classList.toggle('hideElement');
+	masterChef.h2Instruction.classList.remove('hideElement');
 	masterChef.h2Instruction.innerHTML = "Click on a Category to get your 3 random meals! 😁"
 	masterChef.categories.forEach((category) => {
 		const categoryLi = document.createElement('li');
@@ -174,16 +184,17 @@ masterChef.init = () => {
 	})
 	masterChef.buttonsContainer.addEventListener('click', (event) => {
 		if (event.target.className.includes("backToCategory")) {
-			masterChef.buttonsContainer.classList.toggle('hideElement');
+			masterChef.buttonsContainer.classList.add('hideElement');
 			masterChef.displayCategories()
 		} else if (event.target.className.includes("newMeals")) {
-			masterChef.buttonsContainer.classList.toggle('hideElement');
+			masterChef.buttonsContainer.classList.remove('hideElement');
 			masterChef.displayMeals()
 		}
 	})
 	masterChef.mealSelectionsWrapper.addEventListener('click', (event) => {
 		if (event.target.tagName != "UL") {
-			masterChef.buttonsContainer.classList.toggle('hideElement');
+			//masterChef.buttonsContainer.classList.toggle('hideElement');
+			document.querySelector('.newMeals').classList.add('hideElement');
 			const showTheMeal = event.target.className;
 			masterChef.getMealById(showTheMeal);
 		}
