@@ -235,7 +235,7 @@ html {
   overflow: hidden;
 }
 
-h1, h2, ul, li {
+h1, h2, h3, ul, li {
   margin: 0;
   padding: 0;
 }
@@ -246,11 +246,15 @@ html {
 }
 
 h1 {
-  font-family: "Tienne", serif;
+  font-family: "Montserrat Alternates", sans-serif;
   font-size: 2rem;
 }
 
 h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
   font-size: 1.1rem;
 }
 
@@ -260,20 +264,21 @@ img {
 
 li {
   background-color: #e5e0da;
-  margin: 5% 0;
+  margin: 5%;
   list-style: none;
 }
 
-h2 {
+h3 {
   padding: 5% 0 5% 3%;
-  border-bottom: 2px solid #222;
+  border-bottom: 3px solid #41392e;
+  color: #222020;
 }
 
 header .wrapper {
   background: url("../assets/mainheader.jpg") center;
   background-size: cover;
-  min-height: 30vh;
-  min-height: -webkit-fill-available;
+  min-height: 40vh;
+  max-width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -291,6 +296,12 @@ h1 {
 
 span {
   display: block;
+}
+
+h2 {
+  text-align: center;
+  color: #41392e;
+  margin: 10%;
 }
 
 .hideButton {

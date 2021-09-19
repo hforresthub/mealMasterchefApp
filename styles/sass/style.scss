@@ -8,8 +8,8 @@
 header .wrapper {
     background: url('../assets/mainheader.jpg') center;
     background-size: cover;
-	min-height: 30vh;
-	min-height: -webkit-fill-available;
+	min-height: 40vh;
+	max-width: 100%;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
@@ -22,6 +22,12 @@ h1 {
 
 span {
 	display: block;
+}
+
+h2 {
+	text-align: center;
+	color: $secondaryBackground;
+	margin: 10%;
 }
 
 .hideButton {

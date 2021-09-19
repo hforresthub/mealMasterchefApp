@@ -44,11 +44,13 @@ masterChef.tempMeals = [];
 masterChef.categoriesWrapper = document.querySelector('ul.categoriesWrapper');
 masterChef.mealSelectionsWrapper = document.querySelector('ul.mealSelectionsWrapper');
 masterChef.buttonsContainer = document.querySelector('.buttonsContainer');
+masterChef.h2Instruction = document.querySelector('h2');
 
 
 masterChef.displayMeals = () => {
 	masterChef.categoriesWrapper.innerHTML = "";
 	masterChef.mealSelectionsWrapper.innerHTML = "";
+	masterChef.h2Instruction.textContent = "Here are your 3 meals! 😎"
 	const randomMeals = [];
 
 	if (masterChef.tempMeals.length != 0) {
@@ -66,7 +68,7 @@ masterChef.displayMeals = () => {
 		const mealLi = document.createElement('li');
 		mealLi.classList.add(meal.idMeal);
 		mealLi.innerHTML = `
-            <h2 class="${meal.idMeal}">${meal.strMeal}<h2>
+            <h3 class="${meal.idMeal}">${meal.strMeal}</h3>
             <div class="imageContainer">
                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="${meal.idMeal}" />
             </div>
@@ -101,10 +103,11 @@ masterChef.getMealsByCategory = (category) => {
 
 masterChef.displayCategories = () => {
 	masterChef.mealSelectionsWrapper.innerHTML = ''
+	masterChef.h2Instruction.textContent = "Click on a Category to get your 3 random meals! 😁"
 	masterChef.categories.forEach((category) => {
 		const categoryLi = document.createElement('li');
 		categoryLi.innerHTML = `
-            <h2 class="${category.strCategory}">${category.strCategory}<h2>
+            <h3 class="${category.strCategory}">${category.strCategory}</h3>
             <div class="imageContainer">
                 <img src="${category.strCategoryThumb}" alt="${category.strCategory} meal" class="${category.strCategory}" />
             </div>

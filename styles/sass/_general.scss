@@ -1,11 +1,11 @@
 li {
-	background-color: $secondaryBackground;
-	margin: 5% 0;
+	background-color: $primaryBackground;
+	margin: 5%;
 	list-style: none;
 }
 
-h2 {
+h3 {
 	padding: 5% 0 5% 3%;
-	// border-top: 2px solid $offBlack;
-	border-bottom: 2px solid $offBlack;
+	border-bottom: 3px solid $secondaryBackground;
+	color: $offBlack;
 }
