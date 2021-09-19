@@ -44,8 +44,47 @@ masterChef.categoriesWrapper = document.querySelector('ul.categoriesWrapper');
 masterChef.mealSelectionsWrapper = document.querySelector('ul.mealSelectionsWrapper');
 masterChef.buttonsContainer = document.querySelector('.buttonsContainer');
 masterChef.h2Instruction = document.querySelector('h2');
+masterChef.theMeal = document.querySelector('.theMeal');
 
 // functions
+masterChef.displayMealInfo = (meal) => {
+	console.log(meal);
+	masterChef.mealSelectionsWrapper.innerHTML = '';
+	// masterChef.h2Instruction.innerHTML = '';
+	masterChef.h2Instruction.classList.toggle('hideElement');
+
+	masterChef.theMeal.innerHTML = `
+		<h4>${meal.strMeal}</h4>
+		<div class="imageContainer">
+			<img src="${meal.strMealThumb}" alt="${meal.strMeal}">
+		</div>
+		<div class="textContent">
+			<ul class="ingredients">
+			</ul>
+			<div class="mealPrepInstructions">
+				<p>${meal.strInstructions}</p>
+			</div>
+		</div>
+	`
+}
+
+masterChef.getMealById = (id) => {
+	// get the meal
+	const url = new URL('https://www.themealdb.com/api/json/v1/1/lookup.php')
+	url.search = new URLSearchParams({
+		i: id
+	});
+
+	fetch(url).then((response) => {
+		return response.json();
+	}).then((jsonResults) => {
+		// console.log(jsonResults.meals[0]);
+		const meal = jsonResults.meals[0];
+		masterChef.displayMealInfo(meal);
+
+	});
+}
+
 masterChef.displayMeals = () => {
 	masterChef.categoriesWrapper.innerHTML = "";
 	masterChef.mealSelectionsWrapper.innerHTML = "";
@@ -75,7 +114,7 @@ masterChef.displayMeals = () => {
 	});
 
 
-	masterChef.buttonsContainer.classList.toggle('hideButton');
+	masterChef.buttonsContainer.classList.toggle('hideElement');
 }
 
 masterChef.getMealsByCategory = (category) => {
@@ -97,6 +136,8 @@ masterChef.getMealsByCategory = (category) => {
 
 masterChef.displayCategories = () => {
 	masterChef.mealSelectionsWrapper.innerHTML = ''
+	masterChef.theMeal.innerHTML = '';
+	// masterChef.h2Instruction.classList.toggle('hideElement');
 	masterChef.h2Instruction.innerHTML = "Click on a Category to get your 3 random meals! 😁"
 	masterChef.categories.forEach((category) => {
 		const categoryLi = document.createElement('li');
@@ -133,11 +174,18 @@ masterChef.init = () => {
 	})
 	masterChef.buttonsContainer.addEventListener('click', (event) => {
 		if (event.target.className.includes("backToCategory")) {
-			masterChef.buttonsContainer.classList.toggle('hideButton');
+			masterChef.buttonsContainer.classList.toggle('hideElement');
 			masterChef.displayCategories()
 		} else if (event.target.className.includes("newMeals")) {
-			masterChef.buttonsContainer.classList.toggle('hideButton');
+			masterChef.buttonsContainer.classList.toggle('hideElement');
 			masterChef.displayMeals()
+		}
+	})
+	masterChef.mealSelectionsWrapper.addEventListener('click', (event) => {
+		if (event.target.tagName != "UL") {
+			masterChef.buttonsContainer.classList.toggle('hideElement');
+			const showTheMeal = event.target.className;
+			masterChef.getMealById(showTheMeal);
 		}
 	})
 }
