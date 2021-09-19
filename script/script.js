@@ -50,7 +50,6 @@ masterChef.theMeal = document.querySelector('.theMeal');
 masterChef.displayMealInfo = (meal) => {
 	console.log(meal);
 	masterChef.mealSelectionsWrapper.innerHTML = '';
-	// masterChef.h2Instruction.innerHTML = '';
 	masterChef.h2Instruction.classList.add('hideElement');
 
 	masterChef.theMeal.innerHTML = `
@@ -66,14 +65,21 @@ masterChef.displayMealInfo = (meal) => {
 			</div>
 		</div>
 	`
-	// console.log(meal.length);
-	const length = Object.keys(meal)
-	console.log(length.length);
-	// meal.ingredient1
+	const ingredientsUl = document.querySelector('.ingredients');
+
+	let n = 1;
 	for (ingredient in meal) {
-		
-		console.log(ingredient == "strIngredient1");
+		if (ingredient == `strIngredient${n}`) {
+			if (meal[ingredient] != '' || meal[ingredient] != '') {
+				const ingredientLi = document.createElement('li');
+				ingredientLi.innerHTML = meal[ingredient];
+				ingredientsUl.append(ingredientLi);
+			}
+			n++;
+
+		}
 	}
+
 }
 
 masterChef.getMealById = (id) => {
@@ -91,6 +97,7 @@ masterChef.getMealById = (id) => {
 		masterChef.displayMealInfo(meal);
 
 	});
+
 }
 
 masterChef.displayMeals = () => {
