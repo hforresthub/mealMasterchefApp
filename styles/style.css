@@ -248,10 +248,14 @@ html {
 h1 {
   font-family: "Montserrat Alternates", sans-serif;
   font-size: 2rem;
+  padding-left: 3%;
 }
 
 h2 {
+  color: #41392e;
+  text-align: center;
   font-size: 1.5rem;
+  margin: 10%;
 }
 
 h3 {
@@ -265,6 +269,11 @@ img {
 
 button {
   font-size: 1.5rem;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 li {
@@ -321,18 +330,50 @@ h3 {
 }
 
 @media (min-width: 600px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+
   ul {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
   }
   ul li {
-    margin: 3% 3% 0 3%;
+    margin: 3% 0 0 0;
+  }
+}
+@media (min-width: 900px) {
+  h1 {
+    padding-left: 10%;
+  }
+
+  h2 {
+    margin: 5%;
+  }
+
+  .buttonsContainer {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  .buttonsContainer button {
+    margin: 0;
+    width: calc(100% / 2 - 5%);
+  }
+}
+@media (min-width: 1200px) {
+  .wrapper {
+    width: 1200px;
   }
 }
 header .wrapper {
@@ -351,16 +392,6 @@ header .wrapper {
           align-items: center;
 }
 
-h1 {
-  padding-left: 3%;
-}
-
 span {
   display: block;
-}
-
-h2 {
-  text-align: center;
-  color: #41392e;
-  margin: 10%;
 }

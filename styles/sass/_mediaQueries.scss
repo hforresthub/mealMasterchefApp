@@ -1,10 +1,41 @@
 @media (min-width: 600px) {
+	h1 {
+		font-size: 3.5rem;
+		// padding-left: 10%;
+	}
 	ul {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
+		justify-content: space-evenly;
 		li {
-			margin: 3% 3% 0 3%;
+			margin: 3% 0 0 0;
 		}	
+	}
+}
+
+@media (min-width: 900px) {
+	h1 {
+		// font-size: 3.5rem;
+		padding-left: 10%;
+	}
+	h2 {
+		margin: 5%;
+	}
+	.buttonsContainer {
+		flex-direction: row;
+		justify-content: space-evenly;
+
+		button {
+			margin: 0;
+			width: calc(100% / 2 - 5%);
+		}
+	}
+}
+
+
+
+@media (min-width: 1200px) {
+	.wrapper {
+		width: 1200px;
 	}
 }

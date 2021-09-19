@@ -11,10 +11,14 @@ html {
 h1 {
 	font-family: $secondaryFont;
 	font-size: 2rem;
+    padding-left: 3%;
 }
 
 h2 {
+    color: $secondaryBackground;
+    text-align: center;
     font-size: 1.5rem;
+    margin: 10%;
 }
 
 h3 {
