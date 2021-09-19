@@ -274,6 +274,27 @@ h3 {
   color: #222020;
 }
 
+.buttonsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+.buttonsContainer button {
+  background-image: -webkit-gradient(linear, left top, right top, from(#F5F5F5), to(#e5e0da));
+  background-image: linear-gradient(to right, #F5F5F5, #e5e0da);
+  color: #222020;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 40px;
+}
+.buttonsContainer button:hover {
+  background-image: -webkit-gradient(linear, left top, right top, from(#bcd37c), to(#e5e0da));
+  background-image: linear-gradient(to right, #bcd37c, #e5e0da);
+}
+
 header .wrapper {
   background: url("../assets/mainheader.jpg") center;
   background-size: cover;
@@ -302,8 +323,4 @@ h2 {
   text-align: center;
   color: #41392e;
   margin: 10%;
-}
-
-.hideButton {
-  display: none;
 }

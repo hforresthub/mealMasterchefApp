@@ -2,7 +2,6 @@
 @import '_variables';
 @import '_typography';
 @import '_general';
-@import '_category';
 @import '_mealSelection';
 
 header .wrapper {
@@ -31,5 +30,5 @@ h2 {
 }
 
 .hideButton {
-	display: none;
+	// display: none;
 }
