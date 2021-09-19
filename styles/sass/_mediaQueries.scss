@@ -1,0 +1,10 @@
+@media (min-width: 600px) {
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		li {
+			margin: 3% 3% 0 3%;
+		}	
+	}
+}
