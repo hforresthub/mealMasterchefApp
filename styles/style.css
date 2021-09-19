@@ -262,6 +262,10 @@ img {
   width: 100%;
 }
 
+button {
+  font-size: 1.5rem;
+}
+
 li {
   background-color: #e5e0da;
   margin: 5%;
@@ -278,9 +282,17 @@ h3 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 5%;
 }
 .buttonsContainer button {
   background-image: -webkit-gradient(linear, left top, right top, from(#F5F5F5), to(#e5e0da));
@@ -288,11 +300,23 @@ h3 {
   color: #222020;
   border: none;
   border-radius: 10px;
-  padding: 10px 40px;
+  padding: 10px 0;
+  width: 100%;
+  margin: 5% 0;
+  position: relative;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.buttonsContainer button i {
+  position: absolute;
+  top: 24%;
+  left: 5%;
 }
 .buttonsContainer button:hover {
-  background-image: -webkit-gradient(linear, left top, right top, from(#bcd37c), to(#e5e0da));
-  background-image: linear-gradient(to right, #bcd37c, #e5e0da);
+  background-image: -webkit-gradient(linear, left top, right top, from(fuchsia), to(#e5e0da));
+  background-image: linear-gradient(to right, fuchsia, #e5e0da);
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 header .wrapper {

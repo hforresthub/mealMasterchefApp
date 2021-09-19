@@ -12,17 +12,51 @@ h3 {
 
 .buttonsContainer {
 	display: flex;
-	justify-content: space-evenly;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	// justify-content: space-evenly;
+	margin: 5%;
+	// button {
+	// 	// background-color: $buttonColor;
+	// 	background-image: linear-gradient(to right, $offWhite, $primaryBackground);
+	// 	color: $offBlack;
+	// 	// border: 3px solid $secondaryBackground;
+	// 	border: none;
+	// 	border-radius: 10px;
+	// 	padding: 10px 0;
+	// 	width: 100%;
+	// 	margin: 5% 0;
+	// 	display: flex;
+	// 	justify-content: space-between;
+
+	// 	i {
+	// 		margin: 0 5%;
+	// 	}
+
+	// 	span {
+	// 		text-align: left;
+	// 		width: 100%;
+	// 	}
 	button {
-		// background-color: $buttonColor;
 		background-image: linear-gradient(to right, $offWhite, $primaryBackground);
 		color: $offBlack;
-		// border: 3px solid $secondaryBackground;
 		border: none;
 		border-radius: 10px;
-		padding: 10px 40px;
+		padding: 10px 0;
+		width: 100%;
+		margin: 5% 0;
+		position: relative;
+		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+		
+		i {
+			position: absolute;
+			top: 24%;
+			left: 5%;
+		}
 	}
 	button:hover {
 		background-image: linear-gradient(to right, $buttonColor, $primaryBackground);
+		box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 	}
 }
