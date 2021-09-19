@@ -32,7 +32,6 @@
 // the meals will display an image and title inside li
 // If the API call fails, display an error message
 
-// console.log("Hello, world!");
 
 // namespace app
 const masterChef = {};
@@ -46,7 +45,7 @@ masterChef.mealSelectionsWrapper = document.querySelector('ul.mealSelectionsWrap
 masterChef.buttonsContainer = document.querySelector('.buttonsContainer');
 masterChef.h2Instruction = document.querySelector('h2');
 
-
+// functions
 masterChef.displayMeals = () => {
 	masterChef.categoriesWrapper.innerHTML = "";
 	masterChef.mealSelectionsWrapper.innerHTML = "";
@@ -62,7 +61,6 @@ masterChef.displayMeals = () => {
 		// throw error message
 		masterChef.h2Instruction.innerHTML = "You're out of meals";
 	} 
-	console.log(masterChef.tempMeals);
 
 	randomMeals.forEach((meal) => {
 		const mealLi = document.createElement('li');
@@ -73,8 +71,6 @@ masterChef.displayMeals = () => {
                 <img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="${meal.idMeal}" />
             </div>
         `;
-		console.log(meal.idMeal);
-		console.log(mealLi);
 		masterChef.mealSelectionsWrapper.append(mealLi);
 	});
 
@@ -82,7 +78,6 @@ masterChef.displayMeals = () => {
 	masterChef.buttonsContainer.classList.toggle('hideButton');
 }
 
-// functions
 masterChef.getMealsByCategory = (category) => {
 	// get the categories
 	const url = new URL('https://www.themealdb.com/api/json/v1/1/filter.php')
@@ -93,7 +88,6 @@ masterChef.getMealsByCategory = (category) => {
 	fetch(url).then((response) => {
 		return response.json();
 	}).then((jsonResults) => {
-		// console.log(jsonResults.meals);
 		masterChef.meals = jsonResults.meals;
 		masterChef.tempMeals = masterChef.meals.slice(0, masterChef.meals.length);
 		masterChef.displayMeals();
@@ -113,7 +107,6 @@ masterChef.displayCategories = () => {
             </div>
         `
 		categoryLi.classList.add(`${category.strCategory}`);
-		// console.log(categoryLi);
 		masterChef.categoriesWrapper.append(categoryLi);
 	});
 }
@@ -125,14 +118,12 @@ masterChef.getCategories = () => {
 	fetch(url).then((response) => {
 		return response.json();
 	}).then((jsonResults) => {
-		// console.log(jsonResults.categories);
 		masterChef.categories = jsonResults.categories;
 		masterChef.displayCategories();
 	});
 }
 
 masterChef.init = () => {
-	// console.log('💪😎🎶🐱‍🏍🐱‍👤');
 	masterChef.getCategories();
 	masterChef.categoriesWrapper.addEventListener('click', (event) => {
 		if (event.target.tagName != "UL") {
@@ -141,7 +132,6 @@ masterChef.init = () => {
 		}
 	})
 	masterChef.buttonsContainer.addEventListener('click', (event) => {
-		console.log(event.target.className);
 		if (event.target.className.includes("backToCategory")) {
 			masterChef.buttonsContainer.classList.toggle('hideButton');
 			masterChef.displayCategories()
