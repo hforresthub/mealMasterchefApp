@@ -50,7 +50,7 @@ masterChef.h2Instruction = document.querySelector('h2');
 masterChef.displayMeals = () => {
 	masterChef.categoriesWrapper.innerHTML = "";
 	masterChef.mealSelectionsWrapper.innerHTML = "";
-	masterChef.h2Instruction.textContent = "Here are your 3 meals! 😎"
+	masterChef.h2Instruction.innerHTML = "Here are your meals! 😎"
 	const randomMeals = [];
 
 	if (masterChef.tempMeals.length != 0) {
@@ -60,7 +60,7 @@ masterChef.displayMeals = () => {
 		}
 	} else {
 		// throw error message
-		masterChef.mealSelectionsWrapper.innerHTML = "You're out of meals";
+		masterChef.h2Instruction.innerHTML = "You're out of meals";
 	} 
 	console.log(masterChef.tempMeals);
 
@@ -103,7 +103,7 @@ masterChef.getMealsByCategory = (category) => {
 
 masterChef.displayCategories = () => {
 	masterChef.mealSelectionsWrapper.innerHTML = ''
-	masterChef.h2Instruction.textContent = "Click on a Category to get your 3 random meals! 😁"
+	masterChef.h2Instruction.innerHTML = "Click on a Category to get your 3 random meals! 😁"
 	masterChef.categories.forEach((category) => {
 		const categoryLi = document.createElement('li');
 		categoryLi.innerHTML = `
@@ -142,10 +142,10 @@ masterChef.init = () => {
 	})
 	masterChef.buttonsContainer.addEventListener('click', (event) => {
 		console.log(event.target.className);
-		if (event.target.className === "backToCategory") {
+		if (event.target.className.includes("backToCategory")) {
 			masterChef.buttonsContainer.classList.toggle('hideButton');
 			masterChef.displayCategories()
-		} else if (event.target.className === "newMeals") {
+		} else if (event.target.className.includes("newMeals")) {
 			masterChef.buttonsContainer.classList.toggle('hideButton');
 			masterChef.displayMeals()
 		}

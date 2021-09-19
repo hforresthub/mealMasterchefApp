@@ -7,8 +7,9 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: space-evenly;
+		flex-direction: row;
 		li {
-			margin: 3% 0 0 0;
+			margin: 0 0 3% 0;
 		}	
 	}
 }
@@ -20,13 +21,20 @@
 	}
 	h2 {
 		margin: 5%;
+		line-height: 4rem;
+	}
+	.mealSelectionsWrapper {
+		li {
+			width: calc(100% / 3 - 5%);
+		}
 	}
 	.buttonsContainer {
 		flex-direction: row;
 		justify-content: space-evenly;
-
+		
 		button {
 			margin: 0;
+			padding: 20px 0;
 			width: calc(100% / 2 - 5%);
 		}
 	}
