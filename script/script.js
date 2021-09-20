@@ -64,6 +64,9 @@ masterChef.displayMealInfo = (meal) => {
 				<p>${meal.strInstructions}</p>
 			</div>
 		</div>
+		<div class="videoContent">
+			<iframe width="420" height="315" src="${meal.strYoutube.replace('watch?v=', 'embed/')}"></iframe>
+		</div>
 	`
 	const ingredientsUl = document.querySelector('.ingredients');
 
