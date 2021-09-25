@@ -61,7 +61,8 @@ masterChef.displayMealInfo = (meal) => {
 			<ul class="ingredients">
 			</ul>
 			<div class="mealPrepInstructions">
-				<p>${meal.strInstructions}</p>
+				<ul class="mealPrepSteps">
+				</ul>
 			</div>
 		</div>
 		<div class="videoContent">
@@ -80,6 +81,17 @@ masterChef.displayMealInfo = (meal) => {
 			}
 			n++;
 
+		}
+	}
+
+	const mealPrepStepsArr = meal.strInstructions.replaceAll('\r', '').split('\n');
+	console.log(mealPrepStepsArr);
+	const mealPrepSteps = document.querySelector('.mealPrepSteps');
+	for (step of mealPrepStepsArr) {
+		const newLi = document.createElement('li');
+		if (step !== '') {
+			newLi.textContent = step;
+			mealPrepSteps.append(newLi);
 		}
 	}
 
@@ -102,7 +114,6 @@ masterChef.getMealById = (id) => {
 	fetch(url).then((response) => {
 		return response.json();
 	}).then((jsonResults) => {
-		// console.log(jsonResults.meals[0]);
 		const meal = jsonResults.meals[0];
 		masterChef.displayMealInfo(meal);
 
@@ -111,7 +122,8 @@ masterChef.getMealById = (id) => {
 }
 
 masterChef.displayMeals = () => {
-	document.querySelector('.newMeals').classList.remove('hideElement')
+	masterChef.buttonsContainer.classList.remove('hideElement');
+	document.querySelector('.newMealsButton').classList.remove('hideElement')
 	masterChef.categoriesWrapper.innerHTML = "";
 	masterChef.mealSelectionsWrapper.innerHTML = "";
 	masterChef.h2Instruction.innerHTML = "Here are your meals! 😎"
@@ -139,9 +151,6 @@ masterChef.displayMeals = () => {
         `;
 		masterChef.mealSelectionsWrapper.append(mealLi);
 	});
-
-
-	masterChef.buttonsContainer.classList.toggle('hideElement');
 }
 
 masterChef.getMealsByCategory = (category) => {
@@ -200,18 +209,17 @@ masterChef.init = () => {
 		}
 	})
 	masterChef.buttonsContainer.addEventListener('click', (event) => {
-		if (event.target.className.includes("backToCategory")) {
+		if (event.target.className.includes("backToCategoryButton")) {
 			masterChef.buttonsContainer.classList.add('hideElement');
 			masterChef.displayCategories()
-		} else if (event.target.className.includes("newMeals")) {
+		} else if (event.target.className.includes("newMealsButton")) {
 			masterChef.buttonsContainer.classList.remove('hideElement');
 			masterChef.displayMeals()
 		}
 	})
 	masterChef.mealSelectionsWrapper.addEventListener('click', (event) => {
 		if (event.target.tagName != "UL") {
-			//masterChef.buttonsContainer.classList.toggle('hideElement');
-			document.querySelector('.newMeals').classList.add('hideElement');
+			document.querySelector('.newMealsButton').classList.add('hideElement');
 			const showTheMeal = event.target.className;
 			masterChef.getMealById(showTheMeal);
 		}
