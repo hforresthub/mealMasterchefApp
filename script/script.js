@@ -57,7 +57,7 @@ masterChef.displayMealInfo = (meal) => {
 		<div class="imageContainer">
 			<img src="${meal.strMealThumb}" alt="${meal.strMeal}">
 		</div>
-		<div class="textContent">
+		<div class="">
 			<ul class="ingredients">
 			</ul>
 			<div class="mealPrepInstructions">

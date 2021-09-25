@@ -411,6 +411,47 @@ footer {
     width: 1200px;
   }
 }
+h2 {
+  display: none;
+}
+
+.theMeal h4 {
+  font-size: 2rem;
+  text-align: center;
+}
+.theMeal .ingredients {
+  text-align: center;
+}
+.theMeal .ingredients li {
+  background: #e5e8b2;
+  padding: 2% 0;
+  border-radius: 10px;
+}
+.theMeal .videoContent {
+  width: 100%;
+  height: 300px;
+  margin: 0 auto;
+}
+.theMeal .videoContent iframe {
+  width: 100%;
+  height: 100%;
+}
+.theMeal .mealPrepInstructions {
+  font-family: "Scheherazade New", serif;
+}
+.theMeal .mealPrepInstructions li {
+  width: 100%;
+  padding: 5%;
+  margin: 0;
+  line-height: 2rem;
+  font-size: 1.3rem;
+  background-color: #f5f0ec;
+  border-radius: 0;
+}
+.theMeal .mealPrepInstructions li:nth-child(even) {
+  background-color: #e8ebde;
+}
+
 header .wrapper {
   background: url("../assets/mainheader.jpg") center;
   background-size: cover;
