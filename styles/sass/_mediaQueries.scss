@@ -11,6 +11,29 @@
 			margin: 0 0 3% 0;
 		}	
 	}
+	.theMeal {
+		display: flex;
+		flex-direction: column;
+		// justify-content: center;
+		align-items: center;
+
+		.imageContainer {
+			height: 450px;
+			width: 450px;
+			margin-bottom: 2%;
+		}
+		ul.ingredients {
+			justify-content: space-evenly;
+			li {
+				width: calc(100% / 2 - 6%);
+				margin: 2% 0;
+			}
+		}
+		.videoContent {
+			height: 450px;
+			margin-top: 2%;
+		}
+	}
 }
 
 @media (min-width: 900px) {
@@ -35,6 +58,29 @@
 			padding: 20px 0;
 			width: calc(100% / 2 - 5%);
 		}
+	}
+	.theMeal {
+		// .imageAndIngred {
+		// 	display: flex;
+
+		// 	.imageContainer {
+		// 		width: 50%;
+		// 		height: 450px;
+		// 	}
+		// 	ul.ingredients {
+		// 		justify-content: space-evenly;
+		// 		width: 100%;
+		// 		align-items: stretch;
+		// 		li {
+		// 			width: calc(100% / 2 - 4%);
+		// 			margin: 5px 0;
+		// 		}
+		// 	}
+		// }
+		// .videoContent {
+		// 	height: 450px;
+		// 	margin-top: 2%;
+		// }
 	}
 }
 
