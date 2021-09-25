@@ -1,13 +1,5 @@
 // Create an app object (app)
 
-// Initialize preset data in the dedicated properties
-// - apiURL
-// https://www.themealdb.com/api/json/v1/1/categories.php  (display categories)
-// https://www.themealdb.com/api/json/v1/1/filter.php?c=beef  (food by categories)
-// https://www.themealdb.com/api/json/v1/1/lookup.php?i=52874  (search by ID number)
-// - userQuery
-
-
 // MVP
 // Give user food categories to choose from "The Meal DB" api
 // display 3 random food from that category 
@@ -16,8 +8,7 @@
 // Once user clicks one of the 3 food options, display prep instructions and ingredients
 // When displaying the meal, display video as well
 
-// Pseudo Code
-// Create an app object (app)
+
 // Create an init method to setup and start the application
 // Make an Api method (getCategory) to display all the food categories user can choose from
 // diplay the categories as images appened inside 'li's
@@ -48,29 +39,33 @@ masterChef.theMeal = document.querySelector('.theMeal');
 
 // functions
 masterChef.displayMealInfo = (meal) => {
-	console.log(meal);
 	masterChef.mealSelectionsWrapper.innerHTML = '';
 	masterChef.h2Instruction.classList.add('hideElement');
 
+	// dynamic elements
 	masterChef.theMeal.innerHTML = `
 		<h4>${meal.strMeal}</h4>
 		<div class="imageContainer">
 			<img src="${meal.strMealThumb}" alt="${meal.strMeal}">
 		</div>
-		<div class="">
+
+		<div class="content">
 			<ul class="ingredients">
 			</ul>
+
+			<div class="videoContent">
+			</div>
+			
 			<div class="mealPrepInstructions">
 				<ul class="mealPrepSteps">
 				</ul>
 			</div>
 		</div>
-		<div class="videoContent">
-		</div>
 		`
-		// <iframe width="420" height="315" src="${meal.strYoutube.replace('watch?v=', 'embed/')}"></iframe>
+
 	const ingredientsUl = document.querySelector('.ingredients');
 
+	// loop through all the ingredient lists and only show properties that have ingredients
 	let n = 1;
 	for (ingredient in meal) {
 		if (ingredient == `strIngredient${n}`) {
@@ -84,8 +79,9 @@ masterChef.displayMealInfo = (meal) => {
 		}
 	}
 
+	// pirate life
+	// breaking string into array to display in steps
 	const mealPrepStepsArr = meal.strInstructions.replaceAll('\r', '').split('\n');
-	console.log(mealPrepStepsArr);
 	const mealPrepSteps = document.querySelector('.mealPrepSteps');
 	for (step of mealPrepStepsArr) {
 		const newLi = document.createElement('li');
@@ -95,9 +91,11 @@ masterChef.displayMealInfo = (meal) => {
 		}
 	}
 
+	// only display of youtube video available
 	if (meal.strYoutube) {
 		const video = document.createElement('iframe');
 		const videoContent = document.querySelector('.videoContent');
+		// youtube video shows only if replaced with embed
 		video.src = meal.strYoutube.replace('watch?v=', 'embed/');
 		videoContent.append(video);
 	}
@@ -116,7 +114,6 @@ masterChef.getMealById = (id) => {
 	}).then((jsonResults) => {
 		const meal = jsonResults.meals[0];
 		masterChef.displayMealInfo(meal);
-
 	});
 
 }
@@ -130,6 +127,8 @@ masterChef.displayMeals = () => {
 	masterChef.h2Instruction.classList.remove('hideElement');
 	const randomMeals = [];
 
+	// grab 3 random meals from array
+	// store meals already displayed into another array to keep track
 	if (masterChef.tempMeals.length != 0) {
 		for (let i = 0; i < Math.min(3, masterChef.tempMeals.length + 1); i++) {
 			const randomNumberIndex = Math.floor(Math.random() * masterChef.tempMeals.length);
@@ -200,6 +199,7 @@ masterChef.getCategories = () => {
 	});
 }
 
+// init method to setup and start the application
 masterChef.init = () => {
 	masterChef.getCategories();
 	masterChef.categoriesWrapper.addEventListener('click', (event) => {
