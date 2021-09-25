@@ -369,6 +369,15 @@ h2 {
   background: #e5e8b2;
   padding: 2% 0;
   border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .theMeal .videoContent {
   width: 100%;
@@ -431,8 +440,8 @@ h2 {
             align-items: center;
   }
   .theMeal .imageContainer {
-    height: 450px;
-    width: 450px;
+    height: 600px;
+    width: 600px;
     margin-bottom: 2%;
   }
   .theMeal ul.ingredients {
@@ -441,8 +450,8 @@ h2 {
             justify-content: space-evenly;
   }
   .theMeal ul.ingredients li {
-    width: calc(100% / 2 - 6%);
-    margin: 2% 0;
+    width: calc(100% / 2 - 4%);
+    margin: 1% 0;
   }
   .theMeal .videoContent {
     height: 450px;
@@ -476,6 +485,22 @@ h2 {
     margin: 0;
     padding: 20px 0;
     width: calc(100% / 2 - 5%);
+  }
+
+  .theMeal h4 {
+    font-size: 2.6rem;
+  }
+  .theMeal ul.ingredients {
+    margin: 4% 0;
+  }
+  .theMeal ul.ingredients li {
+    width: calc(100% / 4 - 2%);
+    margin: 1% 0;
+  }
+  .theMeal .videoContent {
+    height: 600px;
+    width: 97%;
+    margin-top: 2%;
   }
 }
 @media (min-width: 1200px) {

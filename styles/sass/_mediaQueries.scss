@@ -14,19 +14,18 @@
 	.theMeal {
 		display: flex;
 		flex-direction: column;
-		// justify-content: center;
 		align-items: center;
 
 		.imageContainer {
-			height: 450px;
-			width: 450px;
+			height: 600px;
+			width: 600px;
 			margin-bottom: 2%;
 		}
 		ul.ingredients {
 			justify-content: space-evenly;
 			li {
-				width: calc(100% / 2 - 6%);
-				margin: 2% 0;
+				width: calc(100% / 2 - 4%);
+				margin: 1% 0;
 			}
 		}
 		.videoContent {
@@ -60,27 +59,21 @@
 		}
 	}
 	.theMeal {
-		// .imageAndIngred {
-		// 	display: flex;
-
-		// 	.imageContainer {
-		// 		width: 50%;
-		// 		height: 450px;
-		// 	}
-		// 	ul.ingredients {
-		// 		justify-content: space-evenly;
-		// 		width: 100%;
-		// 		align-items: stretch;
-		// 		li {
-		// 			width: calc(100% / 2 - 4%);
-		// 			margin: 5px 0;
-		// 		}
-		// 	}
-		// }
-		// .videoContent {
-		// 	height: 450px;
-		// 	margin-top: 2%;
-		// }
+		h4 {
+			font-size: 2.6rem;
+		}
+		ul.ingredients {
+			margin: 4% 0;
+			li {
+				width: calc(100% / 4 - 2%);
+				margin: 1% 0;
+			}
+		}
+		.videoContent {
+			height: 600px;
+			width: 97%;
+			margin-top: 2%;
+		}
 	}
 }
 
