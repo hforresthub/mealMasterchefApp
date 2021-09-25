@@ -65,9 +65,9 @@ masterChef.displayMealInfo = (meal) => {
 			</div>
 		</div>
 		<div class="videoContent">
-			<iframe width="420" height="315" src="${meal.strYoutube.replace('watch?v=', 'embed/')}"></iframe>
 		</div>
-	`
+		`
+		// <iframe width="420" height="315" src="${meal.strYoutube.replace('watch?v=', 'embed/')}"></iframe>
 	const ingredientsUl = document.querySelector('.ingredients');
 
 	let n = 1;
@@ -81,6 +81,13 @@ masterChef.displayMealInfo = (meal) => {
 			n++;
 
 		}
+	}
+
+	if (meal.strYoutube) {
+		const video = document.createElement('iframe');
+		const videoContent = document.querySelector('.videoContent');
+		video.src = meal.strYoutube.replace('watch?v=', 'embed/');
+		videoContent.append(video);
 	}
 
 }
