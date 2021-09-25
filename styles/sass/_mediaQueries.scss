@@ -29,8 +29,11 @@
 			}
 		}
 		.videoContent {
-			height: 450px;
+			iframe {
+				height: 450px;
 			margin-top: 2%;
+			}
+			
 		}
 	}
 }
@@ -70,9 +73,12 @@
 			}
 		}
 		.videoContent {
-			height: 600px;
+			iframe {
+				height: 600px;
 			width: 97%;
 			margin: 2% auto;
+			}
+			
 		}
 	}
 }

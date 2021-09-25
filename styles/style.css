@@ -376,14 +376,10 @@ footer {
       -ms-flex-align: center;
           align-items: center;
 }
-.theMeal .videoContent {
+.theMeal .videoContent iframe {
   width: 100%;
   height: 300px;
   margin: 0 auto;
-}
-.theMeal .videoContent iframe {
-  width: 100%;
-  height: 100%;
 }
 .theMeal .mealPrepInstructions {
   font-family: "Scheherazade New", serif;
@@ -450,7 +446,7 @@ footer {
     width: calc(100% / 2 - 4%);
     margin: 1% 0;
   }
-  .theMeal .videoContent {
+  .theMeal .videoContent iframe {
     height: 450px;
     margin-top: 2%;
   }
@@ -494,7 +490,7 @@ footer {
     width: calc(100% / 4 - 2%);
     margin: 1% 0;
   }
-  .theMeal .videoContent {
+  .theMeal .videoContent iframe {
     height: 600px;
     width: 97%;
     margin: 2% auto;
