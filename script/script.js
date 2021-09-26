@@ -123,14 +123,14 @@ masterChef.displayMeals = () => {
 	document.querySelector('.newMealsButton').classList.remove('hideElement')
 	masterChef.categoriesWrapper.innerHTML = "";
 	masterChef.mealSelectionsWrapper.innerHTML = "";
-	masterChef.h2Instruction.innerHTML = "Here are your meals! 😎"
+	masterChef.h2Instruction.innerHTML = "Here are your meals! Click on one for meal prep instructions 😎"
 	masterChef.h2Instruction.classList.remove('hideElement');
 	const randomMeals = [];
 
 	// grab 3 random meals from array
 	// store meals already displayed into another array to keep track
 	if (masterChef.tempMeals.length != 0) {
-		for (let i = 0; i < Math.min(3, masterChef.tempMeals.length + 1); i++) {
+		for (let i = 0; i < Math.min(3, masterChef.tempMeals.length); i++) {
 			const randomNumberIndex = Math.floor(Math.random() * masterChef.tempMeals.length);
 			randomMeals.push(masterChef.tempMeals.splice(randomNumberIndex, 1)[0]);
 		}
